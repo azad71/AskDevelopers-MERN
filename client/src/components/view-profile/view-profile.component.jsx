@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
@@ -12,47 +12,55 @@ import ProfileGithub from "./profile-github.component";
 import Spinner from "../common/spinner/spinner.component";
 import ButtonLink from "../button-link/button-link.component";
 
-class ViewProfile extends Component {
-  componentDidMount() {
-    const { handle } = this.props.match.params;
+const ViewProfile = ({ match, getProfileByHandle, profile, history }) => {
+  useEffect(() => {
+    const { handle } = match.params;
     if (handle) {
-      this.props.getProfileByHandle(handle);
+      getProfileByHandle(handle);
     }
-  }
-  render() {
-    const { profile, loading } = this.props.profile;
-    let profileContent;
+  }, [getProfileByHandle, match.params]);
 
-    if (profile === null || loading) {
-      profileContent = <Spinner />;
-    } else {
-      profileContent = (
-        <>
-          <ButtonLink to="/profiles" className="btn btn-light my-3">
-            Back to Profiles
-          </ButtonLink>
-
-          <ProfileHeader profile={profile} />
-          <ProfileAbout profile={profile} />
-          <ProfileCredentials
-            educations={profile.education}
-            experiences={profile.experience}
-          />
-
-          <ProfileGithub />
-        </>
-      );
+  useEffect(() => {
+    if (profile.profile === null && profile.loading) {
+      history.push("/not-found");
     }
+  }, [profile, history]);
 
-    return (
-      <div className="container">
-        <div className="row">
-          <div className="col-md-12">{profileContent}</div>
-        </div>
-      </div>
+  const userProfile = profile.profile;
+  const loading = profile.loading;
+  let profileContent;
+
+  if (userProfile === null || loading) {
+    profileContent = <Spinner />;
+  } else {
+    profileContent = (
+      <>
+        <ButtonLink to="/profiles" className="btn btn-light my-3">
+          Back to Profiles
+        </ButtonLink>
+
+        <ProfileHeader profile={userProfile} />
+        <ProfileAbout profile={userProfile} />
+        <ProfileCredentials
+          educations={userProfile.education}
+          experiences={userProfile.experience}
+        />
+
+        {userProfile.githubProfile ? (
+          <ProfileGithub username={userProfile.githubProfile} />
+        ) : null}
+      </>
     );
   }
-}
+
+  return (
+    <div className="container">
+      <div className="row">
+        <div className="col-md-12">{profileContent}</div>
+      </div>
+    </div>
+  );
+};
 
 ViewProfile.propTypes = {
   profile: PropTypes.object.isRequired,

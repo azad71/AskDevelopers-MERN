@@ -79,8 +79,8 @@ class EditProfile extends Component {
       profile.company = !isEmpty(profile.company) ? profile.company : "";
       profile.website = !isEmpty(profile.website) ? profile.website : "";
       profile.location = !isEmpty(profile.location) ? profile.location : "";
-      profile.githubusername = !isEmpty(profile.githubusername)
-        ? profile.githubusername
+      profile.githubProfile = !isEmpty(profile.githubProfile)
+        ? profile.githubProfile
         : "";
       profile.bio = !isEmpty(profile.bio) ? profile.bio : "";
       profile.social = !isEmpty(profile.social) ? profile.social : {};
@@ -109,7 +109,7 @@ class EditProfile extends Component {
         location: profile.location,
         status: profile.status,
         skills: profile.skills.join(", "),
-        githubusername: profile.githubusername,
+        githubProfile: profile.githubProfile,
         bio: profile.bio,
         twitter: profile.twitter,
         facebook: profile.facebook,

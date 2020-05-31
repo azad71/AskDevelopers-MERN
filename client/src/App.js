@@ -19,6 +19,7 @@ import AddExperience from "./components/add-experience/add-experience.component"
 import AddEducation from "./components/add-education/add-education.component";
 import Profiles from "./components/profiles/profiles.component";
 import ViewProfile from "./components/view-profile/view-profile.component";
+import NotFound from "./components/not-found/not-found.component";
 
 import PrivateRoute from "./components/common/private-route/private-route.component";
 
@@ -62,6 +63,10 @@ function App() {
 
         <Route exact path="/profile/:handle">
           <ViewProfile />
+        </Route>
+
+        <Route exact path="/not-found">
+          <NotFound />
         </Route>
 
         <PrivateRoute exact path="/dashboard" component={Dashboard} />
