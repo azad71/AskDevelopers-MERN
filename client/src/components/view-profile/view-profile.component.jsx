@@ -10,7 +10,7 @@ import ProfileCredentials from "./profile-credentials.component";
 import ProfileAbout from "./profile-about.component";
 import ProfileGithub from "./profile-github.component";
 import Spinner from "../common/spinner/spinner.component";
-import ButtonLink from "../button-link/button-link.component";
+import ButtonLink from "../common/button-link/button-link.component";
 
 const ViewProfile = ({ match, getProfileByHandle, profile, history }) => {
   useEffect(() => {

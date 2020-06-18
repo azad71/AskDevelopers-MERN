@@ -11,7 +11,7 @@ import {
 import Spinner from "../common/spinner/spinner.component";
 import ShowExperience from "../show-experience/show-experience.component";
 import ShowEducation from "../show-education/show-education.component";
-import ButtonLink from "../button-link/button-link.component";
+import ButtonLink from "../common/button-link/button-link.component";
 
 class Dashboard extends Component {
   componentDidMount() {

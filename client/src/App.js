@@ -20,6 +20,7 @@ import AddEducation from "./components/add-education/add-education.component";
 import Profiles from "./components/profiles/profiles.component";
 import ViewProfile from "./components/view-profile/view-profile.component";
 import NotFound from "./components/not-found/not-found.component";
+import Posts from "./components/posts/post.component";
 
 import PrivateRoute from "./components/common/private-route/private-route.component";
 
@@ -74,6 +75,7 @@ function App() {
         <PrivateRoute exact path="/edit-profile" component={EditProfile} />
         <PrivateRoute exact path="/add-experience" component={AddExperience} />
         <PrivateRoute exact path="/add-education" component={AddEducation} />
+        <PrivateRoute exact path="/feed" component={Posts} />
       </Switch>
     </div>
   );

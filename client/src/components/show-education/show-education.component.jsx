@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 import { deleteEducation } from "../../redux/profile/profile.actions";
 
-import ButtonLink from "../button-link/button-link.component";
+import ButtonLink from "../common/button-link/button-link.component";
 
 import dateFormat from "../../utils/dateFormat";
 

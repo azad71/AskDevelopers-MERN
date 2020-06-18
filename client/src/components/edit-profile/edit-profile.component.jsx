@@ -9,7 +9,7 @@ import InputField from "../common/input-field/input-field.component";
 import IconInputField from "../common/icon-input-field/icon-input-field.component";
 import SelectField from "../common/select-field/select-field.component";
 import TextAreaField from "../common/textarea-field/textarea-field.component";
-import ButtonLink from "../button-link/button-link.component";
+import ButtonLink from "../common/button-link/button-link.component";
 
 import {
   createProfile,

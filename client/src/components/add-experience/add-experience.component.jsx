@@ -5,7 +5,7 @@ import { withRouter } from "react-router-dom";
 
 import InputField from "../common/input-field/input-field.component";
 import TextAreaField from "../common/textarea-field/textarea-field.component";
-import ButtonLink from "../button-link/button-link.component";
+import ButtonLink from "../common/button-link/button-link.component";
 
 import { addExperience } from "../../redux/profile/profile.actions";
 

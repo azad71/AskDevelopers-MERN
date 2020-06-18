@@ -65,7 +65,7 @@ exports.postLogin = async (req, res) => {
       const secret_key = process.env.SECRET_KEY;
 
       // attach payload to jwt token
-      const token = jwt.sign(payload, secret_key, { expiresIn: 3600 });
+      const token = jwt.sign(payload, secret_key, { expiresIn: 24 * 3600 });
 
       res.status(200).json({
         message: "Success",

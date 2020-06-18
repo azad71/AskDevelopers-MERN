@@ -11,6 +11,7 @@ const errorReducer = (state = INITIAL_STATE, action) => {
     case errorTypes.CREATE_PROFILE_FAILURE:
     case errorTypes.ADD_EXPERIENCE_FAILURE:
     case errorTypes.ADD_EDUCATION_FAILURE:
+    case errorTypes.ADD_POST_FAILURE:
       return action.payload;
 
     default:
