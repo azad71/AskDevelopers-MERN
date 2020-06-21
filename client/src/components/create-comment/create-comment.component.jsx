@@ -1,18 +1,17 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import CKEditor from "@ckeditor/ckeditor5-react";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
-import { addPost } from "../../redux/post/post.actions";
+import TextAreaField from "../common/textarea-field/textarea-field.component";
 
-class CreatePost extends Component {
+import { addComment } from "../../redux/post/post.actions";
+
+class CreateComment extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       text: "",
-      errors: {},
     };
   }
 
@@ -23,18 +22,17 @@ class CreatePost extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     const { user } = this.props.auth;
+    const { commentId } = this.props;
 
-    const postData = {
+    const commentData = {
       name: user.name,
       avatar: user.avatar,
       text: this.state.text,
     };
 
-    this.props.addPost(postData);
+    this.props.addComment(commentId, commentData);
 
     this.setState({ text: "" });
-
-    // console.log(postData.text);
   };
 
   render() {
@@ -45,25 +43,11 @@ class CreatePost extends Component {
         <div className="card-body">
           <form onSubmit={this.handleSubmit}>
             <div className="form-group">
-              <CKEditor
-                className="ck-editor__editable"
-                editor={ClassicEditor}
-                data={this.state.text}
-                config={{
-                  toolbar: [
-                    "bold",
-                    "italic",
-                    "blockQuote",
-                    "link",
-                    "numberedList",
-                    "bulletedList",
-                    // "mediaEmbed",
-                  ],
-                }}
-                onChange={(event, editor) => {
-                  const data = editor.getData();
-                  this.setState({ text: data });
-                }}
+              <TextAreaField
+                handleChange={this.handleChange}
+                value={this.state.text}
+                name="text"
+                placeholder="Write a comment..."
               />
 
               {errors && (
@@ -81,10 +65,11 @@ class CreatePost extends Component {
   }
 }
 
-CreatePost.propTypes = {
-  addPost: PropTypes.func.isRequired,
+CreateComment.propTypes = {
+  addComment: PropTypes.func.isRequired,
   errors: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired,
+  commentId: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -93,7 +78,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  addPost: (postData) => dispatch(addPost(postData)),
+  addComment: (commentId, commentData) =>
+    dispatch(addComment(commentId, commentData)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreatePost);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateComment);

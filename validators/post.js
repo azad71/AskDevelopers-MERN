@@ -10,8 +10,8 @@ module.exports = function validatePostInput(data) {
 
   data.text = !isEmpty(data.text) ? data.text : "";
 
-  if (!validator.isLength(data.text, { min: 10 })) {
-    errors.text = "Post must be at least 10 characters";
+  if (!validator.isLength(data.text, { min: 1 })) {
+    errors.text = "Post must be at least 1 characters";
   }
 
   if (validator.isEmpty(data.text)) {

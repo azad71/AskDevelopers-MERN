@@ -66,18 +66,18 @@ exports.postLikePost = async (req, res) => {
   try {
     const post_id = req.params.post_id;
     const user_id = req.user._id;
-    const post = await Post.findOne({
-      $and: [{ _id: post_id }, { user: user_id }],
-    });
+
+    const post = await Post.findById(post_id);
 
     const isLiked = post.likes.filter(
       (like) => like.user.toString() === user_id.toString()
     );
 
-    if (isLiked.length > 0)
+    if (isLiked.length > 0) {
       return res
         .status(400)
         .json({ alreadyLiked: "User already liked this post" });
+    }
 
     post.likes.unshift({ user: user_id });
     const savedPost = await post.save();
@@ -92,18 +92,17 @@ exports.postUnlikePost = async (req, res) => {
   try {
     const post_id = req.params.post_id;
     const user_id = req.user._id;
-    const post = await Post.findOne({
-      $and: [{ _id: post_id }, { user: user_id }],
-    });
+    const post = await Post.findById(post_id);
 
     const isLiked = post.likes.filter(
       (like) => like.user.toString() === user_id.toString()
     );
 
-    if (isLiked.length === 0)
+    if (isLiked.length === 0) {
       return res
         .status(400)
         .json({ notLiked: "You haven't yet liked this post" });
+    }
 
     post.likes = post.likes.filter(
       (like) => like.user.toString() !== isLiked[0]["user"].toString()

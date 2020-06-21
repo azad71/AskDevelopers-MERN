@@ -12,8 +12,15 @@ const errorReducer = (state = INITIAL_STATE, action) => {
     case errorTypes.ADD_EXPERIENCE_FAILURE:
     case errorTypes.ADD_EDUCATION_FAILURE:
     case errorTypes.ADD_POST_FAILURE:
+    case errorTypes.DELETE_POST_FAILURE:
+    case errorTypes.ADD_LIKE_FAILURE:
+    case errorTypes.REMOVE_LIKE_FAILURE:
+    case errorTypes.ADD_COMMENT_FAILURE:
+    case errorTypes.DELETE_COMMENT_FAILURE:
       return action.payload;
 
+    case errorTypes.CLEAR_ERROR_MESSAGE:
+      return {};
     default:
       return state;
   }

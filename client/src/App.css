@@ -17,6 +17,10 @@ body {
 }
  */
 
+.ck-editor__editable {
+  min-height: 5em !important;
+}
+
 img {
   width: 100%;
 }
