@@ -4,6 +4,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const passport = require("passport");
 const path = require("path");
+const compression = require("compression");
 
 // initiate app
 const app = express();
@@ -20,6 +21,7 @@ if (process.env.NODE_ENV !== "production") require("dotenv").config();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(passport.initialize());
+app.use(compression());
 require("./config/auth")(passport);
 
 // db config
@@ -39,10 +41,10 @@ app.use("/api/profile", profileAPIs);
 
 // serve static assets for production
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
+  app.use(express.static(path.resolve(__dirname, "client/build")));
 
   app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "build", "client", "index.html"));
+    res.sendFile(path.resolve(__dirname, "client/build", "index.html"));
   });
 }
 
