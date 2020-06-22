@@ -3,6 +3,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const passport = require("passport");
+const path = require("path");
 
 // initiate app
 const app = express();
@@ -35,6 +36,15 @@ mongoose
 app.use("/api", authAPIs);
 app.use("/api/posts", postAPIs);
 app.use("/api/profile", profileAPIs);
+
+// serve static assets for production
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "build", "client", "index.html"));
+  });
+}
 
 const port = process.env.PORT || 5000;
 
