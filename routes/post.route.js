@@ -4,7 +4,7 @@ const router = require("express").Router();
 const passport = require("passport");
 
 // load controllers
-const postControllers = require("../controllers/post");
+const postControllers = require("../controllers/post.controller");
 
 // @route GET api/posts
 // @desc Get posts

@@ -1,10 +1,10 @@
 // import dependencies
 // load models
-const Post = require("../models/post");
-const Profile = require("../models/profile");
+const Post = require("../models/post.model");
+const Profile = require("../models/profile.model");
 
 // load validators
-const validatePostInput = require("../validators/post");
+const validatePostInput = require("../validators/post.validator");
 
 exports.getPosts = async (req, res) => {
   try {

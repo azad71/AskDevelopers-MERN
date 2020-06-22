@@ -1,6 +1,6 @@
 // import dependency
 // load models
-const User = require("../models/user");
+const User = require("../models/user.model");
 
 // load libraries
 const gravatar = require("gravatar");
@@ -8,8 +8,8 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 // load utitlities
-const validateSignUpInput = require("../validators/signup");
-const validateLoginInput = require("../validators/login");
+const validateSignUpInput = require("../validators/signup.validator");
+const validateLoginInput = require("../validators/login.validator");
 
 // load environment variables
 require("dotenv").config();

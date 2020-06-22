@@ -1,12 +1,12 @@
 // import dependencies
 // load validators
-const validateProfileInput = require("../validators/profile");
-const validateExperienceInput = require("../validators/experience");
-const validateEducationInput = require("../validators/education");
+const validateProfileInput = require("../validators/profile.validator");
+const validateExperienceInput = require("../validators/experience.validator");
+const validateEducationInput = require("../validators/education.validator");
 
 // load models
-const Profile = require("../models/profile");
-const User = require("../models/user");
+const Profile = require("../models/profile.model");
+const User = require("../models/user.model");
 
 exports.getProfile = async (req, res) => {
   try {

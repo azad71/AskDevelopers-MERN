@@ -8,9 +8,9 @@ const passport = require("passport");
 const app = express();
 
 // importing endpoints
-const authAPIs = require("./endpoints/auth");
-const postAPIs = require("./endpoints/post");
-const profileAPIs = require("./endpoints/profile");
+const authAPIs = require("./routes/auth.route");
+const postAPIs = require("./routes/post.route");
+const profileAPIs = require("./routes/profile.route");
 
 // environment variable config
 if (process.env.NODE_ENV !== "production") require("dotenv").config();

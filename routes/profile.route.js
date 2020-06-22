@@ -4,7 +4,7 @@ const router = require("express").Router();
 const passport = require("passport");
 
 // load controllers
-const profileControllers = require("../controllers/profile");
+const profileControllers = require("../controllers/profile.controller");
 
 // routes
 

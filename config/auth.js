@@ -3,7 +3,7 @@
 const JwtStrategy = require("passport-jwt").Strategy;
 const ExtractJwt = require("passport-jwt").ExtractJwt;
 const mongoose = require("mongoose");
-const User = require("../models/user");
+const User = require("../models/user.model");
 
 // load environment variables
 require("dotenv").config();
