@@ -31,3 +31,7 @@ npm install
 ```Javascript
 npm run dev
 ```
+
+### Things to add
+
+- Full mobile support

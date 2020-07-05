@@ -11,7 +11,7 @@ import "./App.css";
 
 // loading components
 // initial components
-import Navbar from "./components/layout/navbar.component";
+import NavBar from "./components/layout/navbar.component";
 import Landing from "./components/layout/landing.component";
 import Spinner from "./components/common/spinner/spinner.component";
 
@@ -67,7 +67,7 @@ if (localStorage.jwtToken) {
 function App() {
   return (
     <div className="App">
-      <Navbar />
+      <NavBar />
       <Switch>
         <Suspense fallback={<Spinner />}>
           <Route exact path="/">
